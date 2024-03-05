@@ -15,11 +15,12 @@ public class BaseTest {
     public void setup() {
         driver = DriverFactory.getDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().window().maximize();
         driver.get("https://skleptest.pl/");
     }
 
     @AfterMethod
     public void tearDown() {
-    //    driver.quit();
+        //    driver.quit();
     }
 }

@@ -11,6 +11,9 @@ public class HomePage {
     @FindBy(xpath = "//a[contains(text(),'Account')]")
     private WebElement accountLink;
 
+    @FindBy(xpath = "//li[@class='top-cart'")
+    private WebElement myCartButton;
+
     private WebDriver driver;
 
     public HomePage(WebDriver driver) {
@@ -27,6 +30,16 @@ public class HomePage {
         driver.findElement(By.xpath("//h3/a[text()='"+ title +"']")).click();
         return new ProductPage(driver);
 
+    }
+
+    public HomePage addToCart(String title) {
+        driver.findElement(By.xpath("//h3/a[contains(text(),'"+ title +"')]/following::a[@rel='nofollow'][1]")).click();
+        return this;
+    }
+
+    public CartPage viewCart() {
+        myCartButton.click();
+        return new CartPage(driver);
     }
 }
 

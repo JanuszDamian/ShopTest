@@ -8,9 +8,16 @@ import pl.JDD.pages.HomePage;
 public class BuyProductTest extends BaseTest {
 
     @Test
-    public void buyProductTest() {
+    public void buyProductTestFail() {
             new HomePage(driver)
                     .openProductPage("FITT Belts")
                     .addProductToCart();
+    }
+    @Test
+    public void buyProductTest() {
+        new HomePage(driver)
+                .addToCart("FITT Belts")
+                .viewCart()
+                .openAddressDetails();
     }
 }

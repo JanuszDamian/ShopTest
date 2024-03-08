@@ -14,7 +14,7 @@ public class BuyProductTest extends BaseTest {
                     .addProductToCart();
     }
     @Test
-    public void buyProductTest() {
+    public void buyProductTest() throws InterruptedException {
         new HomePage(driver)
                 .addToCart("FITT Belts")
                 .viewCart()

@@ -11,7 +11,7 @@ public class HomePage {
     @FindBy(xpath = "//a[contains(text(),'Account')]")
     private WebElement accountLink;
 
-    @FindBy(xpath = "//li[@class='top-cart'")
+    @FindBy(xpath = "//li[@class='top-cart']")
     private WebElement myCartButton;
 
     private WebDriver driver;
@@ -32,8 +32,9 @@ public class HomePage {
 
     }
 
-    public HomePage addToCart(String title) {
+    public HomePage addToCart(String title) throws InterruptedException {
         driver.findElement(By.xpath("//h3/a[contains(text(),'"+ title +"')]/following::a[@rel='nofollow'][1]")).click();
+        Thread.sleep(1000);
         return this;
     }
 

@@ -54,6 +54,9 @@ public class AddressDetailsPage {
     @FindBy(id = "payment_method_paypal")
     private WebElement payPalCheckbox;
 
+    @FindBy(id = "order_comments")
+    private WebElement orderComments;
+
     @FindBy(id = "place_order")
     private WebElement placeOrderButton;
 
@@ -71,6 +74,7 @@ public class AddressDetailsPage {
         billingLastNameInput.sendKeys(customer.getLastName());
         billingCompanyInput.sendKeys(customer.getCompanyName());
         billingAddress1Input.sendKeys(String.format("%s %s",customer.getStreet(),customer.getFlatNumber()));
+        orderComments.sendKeys(customer.getOrderComments());
         billingPostCodeInput.sendKeys(customer.getZipCode());
         billingCityInput.sendKeys(customer.getCity());
         billingPhoneInput.sendKeys(customer.getPhone());

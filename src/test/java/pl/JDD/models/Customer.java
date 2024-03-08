@@ -2,15 +2,26 @@ package pl.JDD.models;
 
 public class Customer {
 
-    private String firstName;
-    private String lastName;
-    private String companyName;
+    private String firstName = "Jan";
+    private String lastName = "Kowalski";
+    private String companyName = "BMB";
     private String country;
     private String address;
-    private String street;
-    private String flatNumber;
-    private String zipCode;
-    private String city;
+    private String street = "Produkcyjna";
+    private String flatNumber = "23";
+    private String zipCode = "15-800";
+    private String city = "Białystok";
+    private String phone = "111111111";
+    private String email = "test@test123.pl";
+    private String orderComments = "test comment";
+
+    public String getOrderComments() {
+        return orderComments;
+    }
+
+    public void setOrderComments(String orderComments) {
+        this.orderComments = orderComments;
+    }
 
     public String getPhone() {
         return phone;
@@ -19,9 +30,6 @@ public class Customer {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-
-    private String phone;
-    private String email;
 
     public String getFirstName() {
         return firstName;

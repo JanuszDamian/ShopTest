@@ -4,8 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 import pl.JDD.models.Customer;
+import pl.JDD.utils.SeleniumHelper;
 
 public class AddressDetailsPage {
 
@@ -67,7 +67,7 @@ public class AddressDetailsPage {
         this.driver = driver;
     }
 
-    public OrderDetailsPage fillAddresDetails(Customer customer) throws InterruptedException {
+    public OrderDetailsPage fillAddresDetails(Customer customer) {
         billingFirstNameInput.sendKeys(customer.getFirstName());
         billingLastNameInput.sendKeys(customer.getLastName());
         billingCompanyInput.sendKeys(customer.getCompanyName());
@@ -77,7 +77,7 @@ public class AddressDetailsPage {
         billingCityInput.sendKeys(customer.getCity());
         billingPhoneInput.sendKeys(customer.getPhone());
         billingEmailInput.sendKeys(customer.getEmail());
-        Thread.sleep(1500);
+        SeleniumHelper.waitForClickable(placeOrderButton, driver);
         placeOrderButton.click();
 
         return new OrderDetailsPage(driver);

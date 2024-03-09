@@ -10,6 +10,9 @@ public class CartPage {
     @FindBy(xpath = "//a[contains(text(),'Proceed to checkout')]")
     private WebElement proceedToCheckoutButton;
 
+    @FindBy(xpath = "//td[@class='product-name']/a")
+    private WebElement productInCartName;
+
     private WebDriver driver;
 
     public CartPage(WebDriver driver) {
@@ -20,5 +23,9 @@ public class CartPage {
     public AddressDetailsPage openAddressDetails() {
         proceedToCheckoutButton.click();
         return new AddressDetailsPage(driver);
+    }
+
+    public WebElement getProductInCartName() {
+        return productInCartName;
     }
 }

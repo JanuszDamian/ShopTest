@@ -60,12 +60,10 @@ public class AddressDetailsPage {
     @FindBy(id = "place_order")
     private WebElement placeOrderButton;
 
-
-
     private WebDriver driver;
 
     public AddressDetailsPage(WebDriver driver) {
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
         this.driver = driver;
     }
 
@@ -73,13 +71,13 @@ public class AddressDetailsPage {
         billingFirstNameInput.sendKeys(customer.getFirstName());
         billingLastNameInput.sendKeys(customer.getLastName());
         billingCompanyInput.sendKeys(customer.getCompanyName());
-        billingAddress1Input.sendKeys(String.format("%s %s",customer.getStreet(),customer.getFlatNumber()));
+        billingAddress1Input.sendKeys(String.format("%s %s", customer.getStreet(), customer.getFlatNumber()));
         orderComments.sendKeys(customer.getOrderComments());
         billingPostCodeInput.sendKeys(customer.getZipCode());
         billingCityInput.sendKeys(customer.getCity());
         billingPhoneInput.sendKeys(customer.getPhone());
         billingEmailInput.sendKeys(customer.getEmail());
-        Thread.sleep(1000);
+        Thread.sleep(1500);
         placeOrderButton.click();
 
         return new OrderDetailsPage(driver);

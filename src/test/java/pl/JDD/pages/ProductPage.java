@@ -11,7 +11,7 @@ public class ProductPage {
     private WebElement addToCartButton;
 
     public ProductPage(WebDriver driver) {
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
     public ProductPage addProductToCart() {

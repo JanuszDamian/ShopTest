@@ -27,13 +27,13 @@ public class HomePage {
     }
 
     public ProductPage openProductPage(String title) {
-        driver.findElement(By.xpath("//h3/a[text()='"+ title +"']")).click();
+        driver.findElement(By.xpath("//h3/a[text()='" + title + "']")).click();
         return new ProductPage(driver);
 
     }
 
     public HomePage addToCart(String title) throws InterruptedException {
-        driver.findElement(By.xpath("//h3/a[contains(text(),'"+ title +"')]/following::a[@rel='nofollow'][1]")).click();
+        driver.findElement(By.xpath("//h3/a[contains(text(),'" + title + "')]/following::a[@rel='nofollow'][1]")).click();
         Thread.sleep(1000);
         return this;
     }
@@ -42,5 +42,6 @@ public class HomePage {
         myCartButton.click();
         return new CartPage(driver);
     }
+
 }
 

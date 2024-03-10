@@ -1,5 +1,7 @@
 package pl.JDD.pages;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,13 +18,17 @@ public class HomePage {
 
     private WebDriver driver;
 
+    private static final Logger logger = LogManager.getLogger();
+
     public HomePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
 
     public AccountPage openAccountPage() {
+        logger.info("Open AccountPage");
         accountLink.click();
+        logger.info("Open AccountPage done");
         return new AccountPage(driver);
     }
 
@@ -33,13 +39,17 @@ public class HomePage {
     }
 
     public HomePage addToCart(String title) throws InterruptedException {
+        logger.info("adding a product to the cart");
         driver.findElement(By.xpath("//h3/a[contains(text(),'" + title + "')]/following::a[@rel='nofollow'][1]")).click();
+        logger.info("adding a product to the cart - done");
         Thread.sleep(1000);
         return this;
     }
 
     public CartPage viewCart() {
+        logger.info("Open cartPage");
         myCartButton.click();
+        logger.info("Open cartPage - done");
         return new CartPage(driver);
     }
 

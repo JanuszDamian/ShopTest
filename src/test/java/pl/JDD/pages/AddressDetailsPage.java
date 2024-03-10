@@ -1,5 +1,7 @@
 package pl.JDD.pages;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -62,12 +64,15 @@ public class AddressDetailsPage {
 
     private WebDriver driver;
 
+    private static final Logger logger = LogManager.getLogger();
+
     public AddressDetailsPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
 
-    public OrderDetailsPage fillAddresDetails(Customer customer) {
+    public OrderDetailsPage fillAddresDetails(Customer customer) throws InterruptedException {
+        logger.info("Filling out the required data on the AddresDetails form");
         billingFirstNameInput.sendKeys(customer.getFirstName());
         billingLastNameInput.sendKeys(customer.getLastName());
         billingCompanyInput.sendKeys(customer.getCompanyName());
@@ -77,8 +82,10 @@ public class AddressDetailsPage {
         billingCityInput.sendKeys(customer.getCity());
         billingPhoneInput.sendKeys(customer.getPhone());
         billingEmailInput.sendKeys(customer.getEmail());
+        Thread.sleep(1500);
         SeleniumHelper.waitForClickable(placeOrderButton, driver);
         placeOrderButton.click();
+        logger.info("Order confirmed");
 
         return new OrderDetailsPage(driver);
     }

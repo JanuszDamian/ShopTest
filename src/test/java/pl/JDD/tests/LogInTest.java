@@ -1,5 +1,7 @@
 package pl.JDD.tests;
 
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -9,12 +11,14 @@ public class LogInTest extends BaseTest {
 
     @Test
     public void logInTest() {
+        ExtentTest testLog = extentReports.createTest("logInTest");
         WebElement dashboardLink = new HomePage(driver)
                 .openAccountPage()
                 .logInValidData("test1233911", "qwerty1029384756alskdjfh")
                 .getDashboardLink();
 
         Assert.assertEquals(dashboardLink.getText(), "Dashboard");
+        testLog.log(Status.PASS,"Login Assertion passed");
     }
 
     @Test

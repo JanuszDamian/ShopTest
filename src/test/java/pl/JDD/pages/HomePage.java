@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import pl.JDD.utils.SeleniumHelper;
 
 public class HomePage {
 
@@ -40,7 +41,9 @@ public class HomePage {
 
     public HomePage addToCart(String title) throws InterruptedException {
         logger.info("adding a product to the cart");
-        driver.findElement(By.xpath("//h3/a[contains(text(),'" + title + "')]/following::a[@rel='nofollow'][1]")).click();
+        By productXpath = By.xpath("//h3/a[contains(text(),'" + title + "')]/following::a[@rel='nofollow'][1]");
+        SeleniumHelper.waitForClickable(productXpath,driver);
+        driver.findElement(productXpath).click();
         logger.info("adding a product to the cart - done");
         Thread.sleep(1000);
         return this;
